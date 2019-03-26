@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Store</string>
+    <string name="dont_have_an_account_register_now">Don\'t have an account? Register now.</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account_login">Already have an account? Login.</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="product_name">Product Name</string>
+    <string name="category">Category</string>
+    <string name="price">Price</string>
+    <string name="in_stock">In Stock</string>
+    <string name="available">AVAILABLE</string>
+    <string name="sold_out">SOLD OUT</string>
+
+    <string name="category_1">item1</string>
+    <string name="category_2">item2</string>
+    <string name="category_3">item3</string>
+    <string name="category_4">item4</string>
+</resources>

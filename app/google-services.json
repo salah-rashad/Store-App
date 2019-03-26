@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "883882065630",
+    "firebase_url": "https://store-17e5d.firebaseio.com",
+    "project_id": "store-17e5d",
+    "storage_bucket": "store-17e5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883882065630:android:359e095e70d5f51b",
+        "android_client_info": {
+          "package_name": "com.bemo.store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883882065630-6m5ruplh48pfuaugukvksaohatn6ub5v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bemo.store",
+            "certificate_hash": "d2f567f3ae9e3e4506dfa7c02a22caa1be75b761"
+          }
+        },
+        {
+          "client_id": "883882065630-mals7fim6qju6j2g7r2bbgu3r4g5q25d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVijsHvOGG6wI0tnQRHhvvgkPojeLmtls"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "883882065630-mals7fim6qju6j2g7r2bbgu3r4g5q25d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
