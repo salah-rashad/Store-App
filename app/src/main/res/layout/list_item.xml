@@ -13,8 +13,7 @@
         android:layout_height="80dp"
         android:layout_marginRight="16dp"
         android:scaleType="centerCrop"
-        tools:src="@tools:sample/avatars"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:src="@drawable/product_default_image" />
 
     <TextView
         android:id="@+id/product_name_text_view"

@@ -30,6 +30,8 @@
         <activity
             android:name=".NewProduct"
             android:theme="@style/EditingStyle" />
+        <activity android:name=".EditProduct"
+            android:theme="@style/EditingStyle"/>
     </application>
 
 </manifest>

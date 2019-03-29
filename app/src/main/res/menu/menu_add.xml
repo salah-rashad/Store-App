@@ -4,8 +4,14 @@
 
     <item android:id="@+id/done"
         app:showAsAction="ifRoom"
-        android:orderInCategory="0"
+        android:orderInCategory="1"
         android:title="Done"
         android:icon="@drawable/ic_done_black_24dp"/>
+
+    <item android:id="@+id/delete"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="0"
+        android:title="Delete"
+        android:icon="@drawable/ic_delete_forever_black_24dp"/>
 
 </menu>

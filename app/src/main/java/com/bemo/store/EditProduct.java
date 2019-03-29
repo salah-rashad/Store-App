@@ -1,7 +1,11 @@
 package com.bemo.store;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -22,10 +26,16 @@ public class EditProduct extends AppCompatActivity {
     CheckBox inStockCheckBox;
     TextView inStockTextView;
 
+    private String availableString;
+    private String soldOutString;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_product);
+
+        availableString = getResources().getText(R.string.available).toString();
+        soldOutString = getResources().getText(R.string.sold_out).toString();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -35,18 +45,20 @@ public class EditProduct extends AppCompatActivity {
         priceValue = getIntent().getExtras().getString("price");
         inStockValue = getIntent().getExtras().getString("inStock");
 
-        name = (EditText)findViewById(R.id.product_name_edit_text);
-        category = (EditText)findViewById(R.id.product_category_edit_text);
-        price = (EditText)findViewById(R.id.product_price_edit_text);
-        inStockCheckBox = (CheckBox)findViewById(R.id.product_in_stock_check_box);
-        inStockTextView = (TextView)findViewById(R.id.product_in_stock_text_view);
+
+
+        name = (EditText)findViewById(R.id.product_name_text_edit);
+        category = (EditText)findViewById(R.id.product_category_text_edit);
+        price = (EditText)findViewById(R.id.product_price_text_edit);
+        inStockCheckBox = (CheckBox)findViewById(R.id.product_in_stock_check_box_edit);
+        inStockTextView = (TextView)findViewById(R.id.product_in_stock_text_view_edit);
 
         name.setText(nameValue);
         category.setText(categoryValue);
         price.setText(priceValue);
         inStockTextView.setText(inStockValue);
 
-        if (inStockValue.equals(getResources().getText(R.string.available).toString())) {
+        if (inStockValue.equals(availableString)) {
             inStockCheckBox.setEnabled(true);
         } else {
             inStockCheckBox.setEnabled(false);
@@ -56,9 +68,9 @@ public class EditProduct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (inStockCheckBox.isChecked()) {
-                    inStockTextView.setText(getResources().getText(R.string.available).toString());
+                    inStockTextView.setText(availableString);
                 } else {
-                    inStockTextView.setText(getResources().getText(R.string.sold_out).toString());
+                    inStockTextView.setText(soldOutString);
                 }
             }
         });
@@ -72,9 +84,9 @@ public class EditProduct extends AppCompatActivity {
         productPrice = price.getText().toString();
 
         if (inStockCheckBox.isChecked()) {
-            productAvailability = getResources().getText(R.string.available).toString();
+            productAvailability = availableString;
         } else {
-            productAvailability = getResources().getText(R.string.sold_out).toString();
+            productAvailability = soldOutString;
         }
 
         ///////////////////////////
@@ -84,11 +96,11 @@ public class EditProduct extends AppCompatActivity {
             return;
         }
         if (productCategory.isEmpty() || productCategory.equals(" ")) {
-            name.setError("Please fill this input!");
+            category.setError("Please fill this input!");
             return;
         }
         if (productPrice.isEmpty() || productPrice.equals(" ")) {
-            name.setError("Please fill this input!");
+            price.setError("Please fill this input!");
             return;
         }
 
@@ -101,5 +113,40 @@ public class EditProduct extends AppCompatActivity {
 
         Toast.makeText(this, "Product updated successfully!", Toast.LENGTH_SHORT).show();
         onBackPressed();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.done:
+                updateProduct();
+                break;
+            case R.id.delete:
+                new AlertDialog.Builder(this)
+                        .setTitle(nameValue)
+                        .setMessage("Do you want to delete this product?")
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                mDatabase.child("products").child(id).removeValue();
+                                onBackPressed();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

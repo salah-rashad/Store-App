@@ -45,7 +45,7 @@ public class ProductsAdapter extends ArrayAdapter<Product> {
 
         name.setText(product.getName());
         category.setText(product.getCategory());
-        price.setText(product.getPrice());
+        price.setText(product.getPrice() + " EPG");
         inStock.setText(product.getIn_stock());
         if (product.getIn_stock().equals(getContext().getResources().getText(R.string.available).toString())) {
             inStock.setTextColor(getContext().getResources().getColor(R.color.colorGreen1));
@@ -58,7 +58,7 @@ public class ProductsAdapter extends ArrayAdapter<Product> {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent edit = new Intent(getContext(), EditProduct.class);
+                Intent edit = new Intent(getContext().getApplicationContext(), EditProduct.class);
 
                 edit.putExtra("id", product.getId());
                 edit.putExtra("name", product.getName());
@@ -77,7 +77,7 @@ public class ProductsAdapter extends ArrayAdapter<Product> {
                 new AlertDialog.Builder(getContext())
                         .setTitle(product.getName())
                         .setMessage("Do you want to delete this product?")
-                        .setNeutralButton("Delete", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 mDatabase.child(product.getId()).removeValue();

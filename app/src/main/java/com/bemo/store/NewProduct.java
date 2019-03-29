@@ -88,6 +88,7 @@ public class NewProduct extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_add, menu);
+        menu.getItem(0).setVisible(false);
         return true;
     }
 
@@ -98,6 +99,8 @@ public class NewProduct extends AppCompatActivity {
                 addProduct();
                 break;
         }
-        return onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
+
+
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".NewProduct">
+    tools:context=".EditProduct">
 
     <ImageButton
         android:layout_width="120dp"
@@ -15,8 +15,7 @@
         android:layout_marginBottom="16dp"
         android:background="@color/transparentColor"
         android:scaleType="centerCrop"
-        tools:src="@tools:sample/avatars"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:src="@drawable/product_default_image" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,12 +58,22 @@
             android:text="@string/category"
             android:textAllCaps="true" />
 
+        <EditText
+            android:id="@+id/product_category_text_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="text"
+            android:nextFocusDown="@id/product_price_edit_text"
+            android:text="milks" />
+
         <Spinner
             android:id="@+id/category_spinner"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="2"
-            android:nextFocusDown="@id/product_price_text_edit" />
+            android:nextFocusDown="@id/product_price_text_edit"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
@@ -94,7 +103,7 @@
                 android:layout_height="match_parent"
                 android:inputType="numberDecimal"
                 android:paddingRight="50dp"
-                tools:text="7.5" />
+                tools:text="9.5" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -131,12 +140,14 @@
             android:layout_height="match_parent">
 
             <CheckBox
+                android:id="@+id/product_in_stock_check_box_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:layout_marginRight="8dp"/>
 
             <TextView
+                android:id="@+id/product_in_stock_text_view_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/available"/>

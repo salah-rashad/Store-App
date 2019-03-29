@@ -76,6 +76,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.sort:
                 break;
         }
-        return onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
 }
