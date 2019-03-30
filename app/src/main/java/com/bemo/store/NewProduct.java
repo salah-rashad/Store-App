@@ -82,6 +82,7 @@ public class NewProduct extends AppCompatActivity {
 
         Toast.makeText(this, "Product added successfully!", Toast.LENGTH_SHORT).show();
         name.setText("");
+        category.setText("");
         price.setText("");
     }
 
