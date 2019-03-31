@@ -8,14 +8,29 @@
     android:padding="16dp"
     tools:context=".NewProduct">
 
-    <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:background="@color/transparentColor"
-        android:scaleType="centerCrop"
-        android:src="@drawable/product_default_image" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/product_image_selector"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            app:civ_circle_background_color="@color/white"
+            android:src="@drawable/product_default_image" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignRight="@id/product_image_selector"
+            android:layout_alignBottom="@id/product_image_selector"
+            android:src="@drawable/ic_add_a_photo_black_24dp"
+            android:tint="@color/colorGrey1"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,7 +88,7 @@
             android:layout_height="40dp"
             android:layout_weight="2"
             android:nextFocusDown="@id/product_price_text_edit"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -134,23 +149,23 @@
 
         <LinearLayout
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="2"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_height="match_parent">
+            android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/product_in_stock_check_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:layout_marginRight="8dp"/>
+                android:layout_marginRight="8dp"
+                android:checked="true" />
 
             <TextView
                 android:id="@+id/product_in_stock_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/available"/>
+                android:text="@string/available" />
 
         </LinearLayout>
 

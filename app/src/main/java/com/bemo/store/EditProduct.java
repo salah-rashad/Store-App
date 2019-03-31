@@ -45,8 +45,6 @@ public class EditProduct extends AppCompatActivity {
         priceValue = getIntent().getExtras().getString("price");
         inStockValue = getIntent().getExtras().getString("inStock");
 
-
-
         name = (EditText)findViewById(R.id.product_name_text_edit);
         category = (EditText)findViewById(R.id.product_category_text_edit);
         price = (EditText)findViewById(R.id.product_price_text_edit);
@@ -59,9 +57,9 @@ public class EditProduct extends AppCompatActivity {
         inStockTextView.setText(inStockValue);
 
         if (inStockValue.equals(availableString)) {
-            inStockCheckBox.setEnabled(true);
+            inStockCheckBox.setChecked(true);
         } else {
-            inStockCheckBox.setEnabled(false);
+            inStockCheckBox.setChecked(false);
         }
 
         inStockCheckBox.setOnClickListener(new View.OnClickListener() {
